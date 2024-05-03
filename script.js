@@ -85,26 +85,35 @@ function showMovies(movies) {
         movieEl.classList.add('movie')
 
         movieEl.innerHTML = `
-        <div class="movie">
         <img
-          src="https://images.unsplash.com/photo-1518173835740-f5d14111d76a?ixlib=rb-1.2.1&ix
-        id=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=
-        1154&q=80"
+          src="${IMG_PATH +  poster_path}"
+          alt="${title}"
         />
         <div class="movie-info">
-          <h3>Movie Title</h3>
-          <span class="green">9.8</span>
+          <h3>${title}</h3>
+          <span class="${getClassByRate(vote_average)}">${vote_average.toFixed(1)}</span>
         </div>
         <div class="overview">
           <h3>Overview</h3>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus
-          debitis reiciendis voluptatibus labore odit, reprehenderit eos
-          provident facere alias assumenda.
+          ${overview}
         </div>
-      </div>
         `
-        
-    });
+        main.appendChild(movieEl)
+        // i am using appendChild to append the movie ELEMENT
+    })
 
 }
+// this function is to gives the rating a color
+function getClassByRate(vote) {
+    if(vote >= 8) {
+        return 'green'
+    }
+    else if(vote >= 5) {
+        return 'orange'
+    }
+    else {
+        return 'red'
+    }
+}
+
 
